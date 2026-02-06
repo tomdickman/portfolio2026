@@ -1,0 +1,13 @@
+[00:00:01.472] Server  LOG     ✓ Ready in 1284ms
+[00:00:16.660] Server  WARN    ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:02:00.479] Server  LOG     ✓ Compiled in 56ms
+[00:02:12.657] Server  WARN    ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:02:30.591] Server  WARN    ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:02:52.488] Server  LOG     ✓ Compiled in 47ms
+[00:06:57.076] Server  LOG     ✓ Compiled in 37ms
+[00:07:18.298] Server  LOG     ✓ Compiled in 34ms
+[00:08:21.498] Server  LOG     ✓ Compiled in 42ms
+[00:10:48.749] Server  LOG     ✓ Compiled in 45ms
