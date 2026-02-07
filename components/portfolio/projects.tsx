@@ -74,7 +74,7 @@ export default function Projects() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
+          {projects.map((project, _index) => (
             <motion.div
               key={project.title}
               variants={itemVariants}
