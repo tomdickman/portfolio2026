@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { Button } from '@/components/ui/button'
@@ -7,6 +8,16 @@ import { createSmoothScrollHandler } from '@/lib/scroll-utils'
 
 export default function Header() {
   const { theme, setTheme } = useTheme()
+  const [isMounted, setIsMounted] = useState(false);
+
+  // While not ideal, we need to wait for render cycle before setting
+  // mounted to avoid hydration issues with the theme.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMounted(true);
+  }, [])
+
+  if (!isMounted) return null
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-sm border-b border-border">
