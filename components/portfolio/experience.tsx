@@ -29,39 +29,39 @@ export default function Experience() {
 
   const experiences = [
     {
-      role: 'Senior Full Stack Engineer',
-      company: 'TechCorp',
-      period: '2021 - Present',
+      role: 'Senior Software Engineer',
+      company: 'DiUS',
+      period: '2023 - Present',
       description:
-        'Led development of core platform features serving 100K+ users. Mentored junior developers and established best practices for code quality and testing.',
+        'React, NodeJS, Python, GraphQL and PostgreSQL engineering on AWS cloud platforms.',
       achievements: [
-        'Architected microservices migration reducing latency by 40%',
-        'Implemented automated testing increasing coverage to 85%',
-        'Led technical interviews and onboarding of 5+ engineers',
+        'Architected and delivered e-commerce modernisation increasing platform speed by ~50% and improving web sales by ~14 basis points for a major Australian retailer',
+        'Development of robust gRPC micro-service based APIs, with a focus on speed, performance and scalability',
+        'Designed and delivered bespoke token based design systems fully integrated with Figma and Storybook, built for performance',
       ],
     },
     {
-      role: 'Full Stack Engineer',
-      company: 'StartupXYZ',
-      period: '2018 - 2021',
+      role: 'Software Engineer',
+      company: 'DiUS',
+      period: '2021 - 2023',
       description:
-        'Built and scaled product from MVP to 50K active users. Worked across frontend, backend, and DevOps.',
+        'React, NodeJS, Python and Java engineering for multiple large enterprises',
       achievements: [
-        'Designed and built REST API serving millions of requests monthly',
-        'Optimized database queries reducing response times by 60%',
-        'Implemented CI/CD pipeline reducing deployment time by 50%',
+        'Designed and built micro-frontend applications for a large multi-national financial institution',
+        'Developed custom design system components using web components to remain framework agnostic',
+        'Management and delivery of web applications using cloud infrastructure including IAC (infrastructure as code) management',
       ],
     },
     {
-      role: 'Junior Developer',
-      company: 'WebAgency',
-      period: '2016 - 2018',
+      role: 'Web Developer',
+      company: 'Catalyst IT',
+      period: '2018 - 2020',
       description:
-        'Developed responsive web applications using React and Node.js. Gained experience with modern web development practices.',
+        'Developed responsive cloud based web applications using PHP, Python, Javascript, HTML and CSS. Gained experience with modern web development practices.',
       achievements: [
-        'Delivered 15+ client projects on time and within budget',
-        'Built reusable component library reducing development time',
-        'Improved website performance improving SEO rankings',
+        'Made continuous open source contributions to the largest LMS (Learning Management System) in the world',
+        'Developed various plugins including a media transcoding tool for multiple devices and a PDF conversion tool',
+        'Worked on automation tools to carry out scheduled tasks using lambda functions',
       ],
     },
   ]
