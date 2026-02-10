@@ -43,9 +43,8 @@ export default function Contact() {
   }
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Github, href: 'https://www.github.com/tomdickman', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/twdickman', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:tom@tomdickman.com.au', label: 'Email' },
   ]
 
@@ -178,6 +177,7 @@ export default function Contact() {
                           href={link.href}
                           className="w-10 h-10 rounded-full bg-accent/10 text-accent flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition"
                           aria-label={link.label}
+                          target='_blank'
                         >
                           <Icon className="w-5 h-5" />
                         </a>
