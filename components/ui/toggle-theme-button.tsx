@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Button } from './button'
-import { Moon, Sun } from 'lucide-react';
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
 
 export const ToggleThemeButton = () => {
     const { theme, setTheme } = useTheme()
@@ -24,9 +24,9 @@ export const ToggleThemeButton = () => {
       className="text-foreground hover:bg-muted"
     > {isMounted ? (
         theme === 'dark' ? (
-          <Sun className="h-5 w-5" />
+          <SunIcon className="h-5 w-5" />
         ) : (
-          <Moon className="h-5 w-5" />
+          <MoonIcon className="h-5 w-5" />
         )
       ) : (
         // A placeholder of same size as the icons for when the component

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Moon, Sun } from 'lucide-react'
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { useTheme } from 'next-themes'
 import { Button } from '@/components/ui/button'
 import { createSmoothScrollHandler } from '@/lib/scroll-utils'
@@ -55,9 +55,9 @@ export default function Header() {
             className="text-foreground hover:bg-muted"
           >
             {theme === 'dark' ? (
-              <Sun className="h-5 w-5" />
+              <SunIcon className="h-5 w-5" />
             ) : (
-              <Moon className="h-5 w-5" />
+              <MoonIcon className="h-5 w-5" />
             )}
           </Button>
         </div>

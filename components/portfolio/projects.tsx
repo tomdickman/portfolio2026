@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRightIcon } from '@radix-ui/react-icons'
 
 export default function Projects() {
   const ref = useRef(null)
@@ -84,7 +84,7 @@ export default function Projects() {
                 <h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition">
                   {project.title}
                 </h3>
-                <ArrowRight className="w-5 h-5 text-accent opacity-0 group-hover:opacity-100 transition transform group-hover:translate-x-1" />
+                <ArrowRightIcon className="w-5 h-5 text-accent opacity-0 group-hover:opacity-100 transition transform group-hover:translate-x-1" />
               </div>
 
               <p className="text-foreground/70 mb-6 leading-relaxed">
@@ -107,7 +107,7 @@ export default function Projects() {
                 className="inline-flex items-center gap-2 mt-6 text-accent font-medium hover:gap-3 transition"
               >
                 Learn More
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRightIcon className="w-4 h-4" />
               </a>
             </motion.div>
           ))}

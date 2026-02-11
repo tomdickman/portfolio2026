@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion, Variants } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDownIcon } from '@radix-ui/react-icons'
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0)
@@ -107,7 +107,7 @@ export default function Hero() {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <ChevronDown className="w-6 h-6 text-muted-foreground" />
+        <ChevronDownIcon className="w-6 h-6 text-muted-foreground" />
       </motion.div>
     </section>
   )

@@ -4,8 +4,8 @@ import React from "react"
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
+import { EnvelopeClosedIcon, GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons'
 import { useRef, useState } from 'react'
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -43,9 +43,9 @@ export default function Contact() {
   }
 
   const socialLinks = [
-    { icon: Github, href: 'https://www.github.com/tomdickman', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/twdickman', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:tom@tomdickman.com.au', label: 'Email' },
+    { icon: GitHubLogoIcon, href: 'https://www.github.com/tomdickman', label: 'GitHub' },
+    { icon: LinkedInLogoIcon, href: 'https://www.linkedin.com/in/twdickman', label: 'LinkedIn' },
+    { icon: EnvelopeClosedIcon, href: 'mailto:tom@tomdickman.com.au', label: 'Email' },
   ]
 
   return (
