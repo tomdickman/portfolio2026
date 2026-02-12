@@ -82,7 +82,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section id="top" className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Parallax background elements */}
       <div
         className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted opacity-40"

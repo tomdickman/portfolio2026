@@ -26,7 +26,13 @@ export default function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-sm border-b border-border">
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="text-xl font-bold text-primary">Tom Dickman</div>
+          <a
+            href="#top"
+            onClick={smoothScroll}
+            className="text-xl font-bold text-primary hover:text-accent transition cursor-pointer"
+          >
+            Tom Dickman
+          </a>
 
           <div className="flex items-center gap-4">
             <ul className="hidden md:flex gap-6 text-sm font-medium text-foreground/80 hover:text-foreground transition">
