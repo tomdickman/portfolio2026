@@ -9,8 +9,8 @@ const _geist = Geist({ subsets: ['latin'] })
 const _geistMono = Geist_Mono({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Senior Software Engineer Portfolio',
-  description: 'TypeScript, React, and Python specialist portfolio',
+  title: 'Tom Dickman - Senior Software Engineer',
+  description: 'Full stack TypeScript, React, Node and Python specialist',
   viewport: {
     width: 'device-width',
     initialScale: 1,
