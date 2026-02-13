@@ -30,31 +30,31 @@ export default function Projects() {
 
   const projects = [
     {
-      title: 'CloudDash',
+      title: 'Modernisation',
       description:
-        'Real-time analytics dashboard for cloud infrastructure monitoring. Built with React, TypeScript, and WebSockets for live data updates.',
-      tech: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'WebSockets'],
-      link: '#',
+        'Modernisation of the web order pad used for all domestic ordering on Commsec and additional of international trading to this platform. A high volume of trading goes through this application with the largest market share in Australia for domestic equities trading, so there was a high level of focus on accuracy and reliability',
+      tech: ['React', 'TypeScript', 'Node.js', 'C#', 'MUI', 'Playwright'],
+      link: 'https://www2.commsec.com.au/secure/order-pad',
     },
     {
-      title: 'PyMetrics',
+      title: 'Event driven architechture',
       description:
-        'Python-based metrics collection library with automatic instrumentation. Used by 500+ developers for application monitoring.',
-      tech: ['Python', 'FastAPI', 'Prometheus', 'Redis'],
-      link: '#',
+        'Implementation of microservice APIs for me&u to handle large volume of ordering across local and international venues, while supporting legacy platform APIs. Handle refunds using Kafka topics to ensure reliability and prevent duplication of refund requests and processing. Update of existing APIs to handle multi-venue clients where orders could be made from multiple venues at once and reconciled in one bill.',
+      tech: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'K8s', 'Stripe', 'AWS', 'Kafka'],
+      link: 'https://www.meandu.com.au',
     },
     {
       title: 'Design System',
       description:
-        'Comprehensive design system and component library. Includes 50+ components, documentation, and accessibility guidelines.',
-      tech: ['React', 'TypeScript', 'Tailwind CSS', 'Storybook'],
-      link: '#',
+        'Creation of a bespoke design system for Target Australia with a focus on speed and performance, no off the shelf bulky packages. Implementation of Figma token based syncing with design changes to speed up development and iteration process.',
+      tech: ['React', 'TypeScript', 'CSS', 'Storybook', 'Figma'],
+      link: 'https://www.target.com.au',
     },
     {
-      title: 'Data Pipeline',
+      title: 'Web Performance and Page Speed',
       description:
-        'ETL pipeline processing 100M+ events daily. Built with Python and optimized for cost and performance.',
-      tech: ['Python', 'Apache Airflow', 'Spark', 'AWS'],
+        'Uplift of the Target Australia product pages to new modern stack with a focus on page speed, performance and resultant improvement in click-through rates. Implementation of a monorepo with Nx, addition of page speed and performance metrics, feature flagging and new analytics tools to allow AB testing and measure effect of changes.',
+      tech: ['Next.js', 'React', 'TypeScript', 'Node.js', 'K8s', 'Nx'],
       link: '#',
     },
   ]
