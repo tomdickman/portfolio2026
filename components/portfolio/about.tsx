@@ -54,8 +54,8 @@ export default function About() {
           <div>
             <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
               I&apos;m a software engineer with 8+ years of experience building
-              web applications that solve real problems. I believe in writing
-              clean, maintainable code and creating intuitive user experiences.
+              software that solve real problems. I believe in writing clean, maintainable
+              code and creating intuitive user experiences.
             </p>
             <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
               My passion lies at the intersection of thoughtful design and robust
@@ -64,9 +64,9 @@ export default function About() {
               attention to detail and a focus on scalability.
             </p>
             <p className="text-lg text-foreground/80 leading-relaxed">
-              When I&apos;m not coding, you can find me hiking the Pacific
-              Northwest, reading about systems design, or contributing to
-              open-source projects.
+              When I&apos;m not coding, you can find me running long distances, enjoying the
+              outdoors, learning about new technologies, creating machine learning models
+              for fantasy football, or hanging out with my wonderful wife and kids.
             </p>
           </div>
 
