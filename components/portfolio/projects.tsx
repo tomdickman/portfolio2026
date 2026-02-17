@@ -1,13 +1,13 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { ArrowRightIcon } from '@radix-ui/react-icons'
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 export default function Projects() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -17,7 +17,7 @@ export default function Projects() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -26,38 +26,48 @@ export default function Projects() {
       y: 0,
       transition: { duration: 0.8 },
     },
-  }
+  };
 
   const projects = [
     {
-      title: 'Modernisation',
+      title: "Modernisation",
       description:
-        'Modernisation of the web order pad used for all domestic ordering on Commsec and additional of international trading to this platform. A high volume of trading goes through this application with the largest market share in Australia for domestic equities trading, so there was a high level of focus on accuracy and reliability',
-      tech: ['React', 'TypeScript', 'Node.js', 'C#', 'MUI', 'Playwright'],
-      link: 'https://www2.commsec.com.au/secure/order-pad',
+        "Modernisation of the web order pad used for all domestic ordering on Commsec and additional of international trading to this platform. A high volume of trading goes through this application with the largest market share in Australia for domestic equities trading, so there was a high level of focus on accuracy and reliability",
+      tech: ["React", "TypeScript", "Node.js", "C#", "MUI", "Playwright"],
+      link: "https://www2.commsec.com.au/secure/order-pad",
     },
     {
-      title: 'Event driven architechture',
+      title: "Event driven architechture",
       description:
-        'Implementation of microservice APIs for me&u to handle large volume of ordering across local and international venues, while supporting legacy platform APIs. Handle refunds using Kafka topics to ensure reliability and prevent duplication of refund requests and processing. Update of existing APIs to handle multi-venue clients where orders could be made from multiple venues at once and reconciled in one bill.',
-      tech: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'K8s', 'Stripe', 'AWS', 'Kafka'],
-      link: 'https://www.meandu.com.au',
+        "Implementation of microservice APIs for me&u to handle large volume of ordering across local and international venues, while supporting legacy platform APIs. Handle refunds using Kafka topics to ensure reliability and prevent duplication of refund requests and processing. Update of existing APIs to handle multi-venue clients where orders could be made from multiple venues at once and reconciled in one bill.",
+      tech: [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "Docker",
+        "K8s",
+        "Stripe",
+        "AWS",
+        "Kafka",
+      ],
+      link: "https://www.meandu.com.au",
     },
     {
-      title: 'Design System',
+      title: "Design System",
       description:
-        'Creation of a bespoke design system for Target Australia with a focus on speed and performance, no off the shelf bulky packages. Implementation of Figma token based syncing with design changes to speed up development and iteration process.',
-      tech: ['React', 'TypeScript', 'CSS', 'Storybook', 'Figma'],
-      link: 'https://www.target.com.au',
+        "Creation of a bespoke design system for Target Australia with a focus on speed and performance, no off the shelf bulky packages. Implementation of Figma token based syncing with design changes to speed up development and iteration process.",
+      tech: ["React", "TypeScript", "CSS", "Storybook", "Figma"],
+      link: "https://www.target.com.au",
     },
     {
-      title: 'Web Performance and Page Speed',
+      title: "Web Performance and Page Speed",
       description:
-        'Uplift of the Target Australia product pages to new modern stack with a focus on page speed, performance and resultant improvement in click-through rates. Implementation of a monorepo with Nx, addition of page speed and performance metrics, feature flagging and new analytics tools to allow AB testing and measure effect of changes.',
-      tech: ['Next.js', 'React', 'TypeScript', 'Node.js', 'K8s', 'Nx'],
-      link: 'https://www.target.com.au',
+        "Uplift of the Target Australia product pages to new modern stack with a focus on page speed, performance and resultant improvement in click-through rates. Implementation of a monorepo with Nx, addition of page speed and performance metrics, feature flagging and new analytics tools to allow AB testing and measure effect of changes.",
+      tech: ["Next.js", "React", "TypeScript", "Node.js", "K8s", "Nx"],
+      link: "https://www.target.com.au",
     },
-  ]
+  ];
 
   return (
     <section id="projects" className="py-24">
@@ -66,7 +76,7 @@ export default function Projects() {
         className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
         initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
+        animate={inView ? "visible" : "hidden"}
       >
         <motion.div variants={itemVariants} className="mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">Projects</h2>
@@ -104,7 +114,7 @@ export default function Projects() {
 
               <a
                 href={project.link}
-                target='_blank'
+                target="_blank"
                 className="inline-flex items-center gap-2 mt-6 text-accent font-medium hover:gap-3 transition"
               >
                 Learn More
@@ -115,5 +125,5 @@ export default function Projects() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }

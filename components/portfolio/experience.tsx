@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function Experience() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -16,7 +16,7 @@ export default function Experience() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, x: -20 },
@@ -25,46 +25,46 @@ export default function Experience() {
       x: 0,
       transition: { duration: 0.8 },
     },
-  }
+  };
 
   const experiences = [
     {
-      role: 'Senior Software Engineer',
-      company: 'DiUS',
-      period: '2023 - Present',
+      role: "Senior Software Engineer",
+      company: "DiUS",
+      period: "2023 - Present",
       description:
-        'React, NodeJS, Python, GraphQL and PostgreSQL engineering on AWS cloud platforms.',
+        "React, NodeJS, Python, GraphQL and PostgreSQL engineering on AWS cloud platforms.",
       achievements: [
-        'Architected and delivered e-commerce modernisation increasing platform speed by ~50% and improving web sales by ~14 basis points for a major Australian retailer',
-        'Development of robust gRPC micro-service based APIs, with a focus on speed, performance and scalability',
-        'Designed and delivered bespoke token based design systems fully integrated with Figma and Storybook, built for performance',
+        "Architected and delivered e-commerce modernisation increasing platform speed by ~50% and improving web sales by ~14 basis points for a major Australian retailer",
+        "Development of robust gRPC micro-service based APIs, with a focus on speed, performance and scalability",
+        "Designed and delivered bespoke token based design systems fully integrated with Figma and Storybook, built for performance",
       ],
     },
     {
-      role: 'Software Engineer',
-      company: 'DiUS',
-      period: '2021 - 2023',
+      role: "Software Engineer",
+      company: "DiUS",
+      period: "2021 - 2023",
       description:
-        'React, NodeJS, Python and Java engineering for multiple large enterprises',
+        "React, NodeJS, Python and Java engineering for multiple large enterprises",
       achievements: [
-        'Designed and built micro-frontend applications for a large multi-national financial institution',
-        'Developed custom design system components using web components to remain framework agnostic',
-        'Management and delivery of web applications using cloud infrastructure including IAC (infrastructure as code) management',
+        "Designed and built micro-frontend applications for a large multi-national financial institution",
+        "Developed custom design system components using web components to remain framework agnostic",
+        "Management and delivery of web applications using cloud infrastructure including IAC (infrastructure as code) management",
       ],
     },
     {
-      role: 'Web Developer',
-      company: 'Catalyst IT',
-      period: '2018 - 2020',
+      role: "Web Developer",
+      company: "Catalyst IT",
+      period: "2018 - 2020",
       description:
-        'Developed responsive cloud based web applications using PHP, Python, Javascript, HTML and CSS. Gained experience with modern web development practices.',
+        "Developed responsive cloud based web applications using PHP, Python, Javascript, HTML and CSS. Gained experience with modern web development practices.",
       achievements: [
-        'Made continuous open source contributions to the largest LMS (Learning Management System) in the world',
-        'Developed various plugins including a media transcoding tool for multiple devices and a PDF conversion tool',
-        'Worked on automation tools to carry out scheduled tasks using lambda functions',
+        "Made continuous open source contributions to the largest LMS (Learning Management System) in the world",
+        "Developed various plugins including a media transcoding tool for multiple devices and a PDF conversion tool",
+        "Worked on automation tools to carry out scheduled tasks using lambda functions",
       ],
     },
-  ]
+  ];
 
   return (
     <section id="experience" className="py-24 bg-muted/30">
@@ -73,10 +73,12 @@ export default function Experience() {
         className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
         initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
+        animate={inView ? "visible" : "hidden"}
       >
         <motion.div variants={itemVariants} className="mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">Experience</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4">
+            Experience
+          </h2>
           <div className="w-12 h-1 bg-accent rounded" />
         </motion.div>
 
@@ -116,7 +118,9 @@ export default function Experience() {
                       key={achievement}
                       className="flex items-start gap-3 text-foreground/70"
                     >
-                      <span className="text-accent mt-1.5 flex-shrink-0">•</span>
+                      <span className="text-accent mt-1.5 flex-shrink-0">
+                        •
+                      </span>
                       <span>{achievement}</span>
                     </li>
                   ))}
@@ -127,5 +131,5 @@ export default function Experience() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }

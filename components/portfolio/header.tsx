@@ -1,26 +1,31 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import { Cross2Icon, HamburgerMenuIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons'
-import { useTheme } from 'next-themes'
-import { Button } from '@/components/ui/button'
-import { createSmoothScrollHandler } from '@/lib/scroll-utils'
+import { useEffect, useState } from "react";
+import {
+  Cross2Icon,
+  HamburgerMenuIcon,
+  MoonIcon,
+  SunIcon,
+} from "@radix-ui/react-icons";
+import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
+import { createSmoothScrollHandler } from "@/lib/scroll-utils";
 
 export default function Header() {
-  const { theme, setTheme } = useTheme()
-  const [isMounted, setIsMounted] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { theme, setTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const smoothScroll = createSmoothScrollHandler()
+  const smoothScroll = createSmoothScrollHandler();
 
   // While not ideal, we need to wait for render cycle before setting
   // mounted to avoid hydration issues with the theme.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsMounted(true)
-  }, [])
+    setIsMounted(true);
+  }, []);
 
-  if (!isMounted) return null
+  if (!isMounted) return null;
 
   return (
     <>
@@ -78,10 +83,10 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="text-foreground hover:bg-muted"
               >
-                {theme === 'dark' ? (
+                {theme === "dark" ? (
                   <SunIcon className="h-5 w-5" />
                 ) : (
                   <MoonIcon className="h-5 w-5" />
@@ -106,7 +111,7 @@ export default function Header() {
       {/* Mobile slideout menu */}
       <div
         className={`fixed inset-0 z-50 md:hidden transition-opacity duration-200 ${
-          isMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
+          isMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
         {/* Backdrop */}
@@ -118,7 +123,7 @@ export default function Header() {
         {/* Slideout panel */}
         <div
           className={`absolute inset-y-0 right-0 w-64 max-w-[75%] bg-background border-l border-border shadow-lg transform transition-transform duration-200 ${
-            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <div className="flex items-center justify-between px-4 h-16 border-b border-border">
@@ -141,8 +146,8 @@ export default function Header() {
               <a
                 href="#about"
                 onClick={(event) => {
-                  setIsMenuOpen(false)
-                  smoothScroll(event)
+                  setIsMenuOpen(false);
+                  smoothScroll(event);
                 }}
                 className="block py-1 hover:text-accent transition"
               >
@@ -153,8 +158,8 @@ export default function Header() {
               <a
                 href="#projects"
                 onClick={(event) => {
-                  setIsMenuOpen(false)
-                  smoothScroll(event)
+                  setIsMenuOpen(false);
+                  smoothScroll(event);
                 }}
                 className="block py-1 hover:text-accent transition"
               >
@@ -165,8 +170,8 @@ export default function Header() {
               <a
                 href="#experience"
                 onClick={(event) => {
-                  setIsMenuOpen(false)
-                  smoothScroll(event)
+                  setIsMenuOpen(false);
+                  smoothScroll(event);
                 }}
                 className="block py-1 hover:text-accent transition"
               >
@@ -177,8 +182,8 @@ export default function Header() {
               <a
                 href="#contact"
                 onClick={(event) => {
-                  setIsMenuOpen(false)
-                  smoothScroll(event)
+                  setIsMenuOpen(false);
+                  smoothScroll(event);
                 }}
                 className="block py-1 hover:text-accent transition"
               >
@@ -189,5 +194,5 @@ export default function Header() {
         </div>
       </div>
     </>
-  )
+  );
 }

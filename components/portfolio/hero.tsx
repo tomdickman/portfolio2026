@@ -1,65 +1,65 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import { motion, Variants } from 'framer-motion'
-import { ChevronDownIcon } from '@radix-ui/react-icons'
+import { useEffect, useState } from "react";
+import { motion, Variants } from "framer-motion";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 export default function Hero() {
-  const [scrollY, setScrollY] = useState(0)
-  const [typedName, setTypedName] = useState('')
+  const [scrollY, setScrollY] = useState(0);
+  const [typedName, setTypedName] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Typewriter effect for the name, restarting every 10 seconds
   useEffect(() => {
-    const fullName = 'Tom Dickman'
-    let timeoutId: number | null = null
-    let intervalId: number | null = null
+    const fullName = "Tom Dickman";
+    let timeoutId: number | null = null;
+    let intervalId: number | null = null;
 
     const startTyping = () => {
       // Clear any in-progress typing cycle
       if (timeoutId !== null) {
-        window.clearTimeout(timeoutId)
+        window.clearTimeout(timeoutId);
       }
 
-      let currentIndex = 0
-      setTypedName('')
+      let currentIndex = 0;
+      setTypedName("");
 
       const typeNext = () => {
         // Advance to the next character
-        currentIndex += 1
-        setTypedName(fullName.slice(0, currentIndex))
+        currentIndex += 1;
+        setTypedName(fullName.slice(0, currentIndex));
 
         // If there are still characters left, schedule the next one
         if (currentIndex < fullName.length) {
-          const baseDelay = 200 // base delay in ms between keystrokes
-          const jitter = Math.random() * 50 // add up to 50ms of randomness
-          timeoutId = window.setTimeout(typeNext, baseDelay + jitter)
+          const baseDelay = 200; // base delay in ms between keystrokes
+          const jitter = Math.random() * 50; // add up to 50ms of randomness
+          timeoutId = window.setTimeout(typeNext, baseDelay + jitter);
         }
-      }
+      };
 
       // Initial delay before typing starts for a more natural feel
-      timeoutId = window.setTimeout(typeNext, 400)
-    }
+      timeoutId = window.setTimeout(typeNext, 400);
+    };
 
     // Start immediately on mount
-    startTyping()
+    startTyping();
     // Restart the typing animation every 10 seconds
-    intervalId = window.setInterval(startTyping, 10000)
+    intervalId = window.setInterval(startTyping, 10000);
 
     return () => {
       if (timeoutId !== null) {
-        window.clearTimeout(timeoutId)
+        window.clearTimeout(timeoutId);
       }
       if (intervalId !== null) {
-        window.clearInterval(intervalId)
+        window.clearInterval(intervalId);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -70,19 +70,22 @@ export default function Hero() {
         delayChildren: 0.3,
       },
     },
-  }
+  };
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: 'easeOut' },
+      transition: { duration: 0.8, ease: "easeOut" },
     },
-  }
+  };
 
   return (
-    <section id="top" className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section
+      id="top"
+      className="relative h-screen flex items-center justify-center overflow-hidden pt-16"
+    >
       {/* Parallax background elements */}
       <div
         className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted opacity-40"
@@ -106,10 +109,7 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
-        <motion.div
-          variants={itemVariants}
-          className="mb-6"
-        >
+        <motion.div variants={itemVariants} className="mb-6">
           <p className="text-accent font-semibold text-sm tracking-widest uppercase">
             Hello, My name is...
           </p>
@@ -123,7 +123,10 @@ export default function Hero() {
           <span className="inline-block w-1 h-[1em] mb-[-5px] bg-foreground ml-1 animate-pulse" />
         </motion.h1>
 
-        <motion.h2 variants={itemVariants} className="text-1xl sm:text-4xl font-bold m-2 text-foreground">
+        <motion.h2
+          variants={itemVariants}
+          className="text-1xl sm:text-4xl font-bold m-2 text-foreground"
+        >
           Senior Software Engineer
         </motion.h2>
 
@@ -134,7 +137,6 @@ export default function Hero() {
           Specializing in TypeScript, React, and Python. Building scalable,
           elegant solutions for complex problems.
         </motion.p>
-
 
         <motion.div
           variants={itemVariants}
@@ -164,5 +166,5 @@ export default function Hero() {
         <ChevronDownIcon className="w-6 h-6 text-muted-foreground" />
       </motion.div>
     </section>
-  )
+  );
 }

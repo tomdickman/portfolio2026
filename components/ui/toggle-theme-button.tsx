@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
-import { Button } from './button'
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { Button } from "./button";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
 export const ToggleThemeButton = () => {
-    const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -14,26 +14,29 @@ export const ToggleThemeButton = () => {
     // mounted to avoid hydration issues with the theme.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
-  }, [])
+  }, []);
 
-  return isMounted && (
-    <Button
-      variant="ghost"
-      size="icon"
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="text-foreground hover:bg-muted"
-    > {isMounted ? (
-        theme === 'dark' ? (
-          <SunIcon className="h-5 w-5" />
+  return (
+    isMounted && (
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        className="text-foreground hover:bg-muted"
+      >
+        {" "}
+        {isMounted ? (
+          theme === "dark" ? (
+            <SunIcon className="h-5 w-5" />
+          ) : (
+            <MoonIcon className="h-5 w-5" />
+          )
         ) : (
-          <MoonIcon className="h-5 w-5" />
-        )
-      ) : (
-        // A placeholder of same size as the icons for when the component
-        // isn't yet mounted.
-        <div className="h-5 w-5" >{" "}</div>
-      )}
-
-    </Button>
-  )
-}
+          // A placeholder of same size as the icons for when the component
+          // isn't yet mounted.
+          <div className="h-5 w-5"> </div>
+        )}
+      </Button>
+    )
+  );
+};

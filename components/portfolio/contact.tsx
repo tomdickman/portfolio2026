@@ -1,20 +1,23 @@
-'use client'
+"use client";
 
-import React from "react"
+import { SubmitEvent, useRef, useState } from "react";
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { EnvelopeClosedIcon, GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons'
-import { useRef, useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { createSmoothScrollHandler } from '@/lib/scroll-utils'
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import {
+  EnvelopeClosedIcon,
+  GitHubLogoIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { createSmoothScrollHandler } from "@/lib/scroll-utils";
 
 export default function Contact() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
-  const [submitted, setSubmitted] = useState(false)
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [submitted, setSubmitted] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -24,7 +27,7 @@ export default function Contact() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -33,20 +36,32 @@ export default function Contact() {
       y: 0,
       transition: { duration: 0.8 },
     },
-  }
+  };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setSubmitted(true)
+  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitted(true);
     // TODO: Actually submit this.
-    setTimeout(() => setSubmitted(false), 3000)
-  }
+    setTimeout(() => setSubmitted(false), 3000);
+  };
 
   const socialLinks = [
-    { icon: GitHubLogoIcon, href: 'https://www.github.com/tomdickman', label: 'GitHub' },
-    { icon: LinkedInLogoIcon, href: 'https://www.linkedin.com/in/twdickman', label: 'LinkedIn' },
-    { icon: EnvelopeClosedIcon, href: 'mailto:tom@tomdickman.com.au', label: 'Email' },
-  ]
+    {
+      icon: GitHubLogoIcon,
+      href: "https://www.github.com/tomdickman",
+      label: "GitHub",
+    },
+    {
+      icon: LinkedInLogoIcon,
+      href: "https://www.linkedin.com/in/twdickman",
+      label: "LinkedIn",
+    },
+    {
+      icon: EnvelopeClosedIcon,
+      href: "mailto:tom@tomdickman.com.au",
+      label: "Email",
+    },
+  ];
 
   return (
     <section id="contact" className="py-24">
@@ -55,25 +70,24 @@ export default function Contact() {
         className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
         initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
+        animate={inView ? "visible" : "hidden"}
       >
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">Get In Touch</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4">
+            Get In Touch
+          </h2>
           <div className="w-12 h-1 bg-accent rounded mx-auto mb-6" />
           <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             Have a project in mind or just want to chat? Feel free to reach out.
-            I&apos;m always interested in hearing about interesting opportunities
-            and ideas.
+            I&apos;m always interested in hearing about interesting
+            opportunities and ideas.
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           {/* Contact Form */}
           <motion.div variants={itemVariants}>
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-4"
-            >
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label
                   htmlFor="name"
@@ -142,7 +156,10 @@ export default function Contact() {
           </motion.div>
 
           {/* Contact Info */}
-          <motion.div variants={itemVariants} className="flex flex-col justify-between">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col justify-between"
+          >
             <div>
               <h3 className="text-2xl font-semibold text-foreground mb-6">
                 Let&apos;s Connect
@@ -170,18 +187,18 @@ export default function Contact() {
                   <p className="text-sm text-muted-foreground mb-4">FOLLOW</p>
                   <div className="flex gap-4">
                     {socialLinks.map((link) => {
-                      const Icon = link.icon
+                      const Icon = link.icon;
                       return (
                         <a
                           key={link.label}
                           href={link.href}
                           className="w-10 h-10 rounded-full bg-accent/10 text-accent flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition"
                           aria-label={link.label}
-                          target='_blank'
+                          target="_blank"
                         >
                           <Icon className="w-5 h-5" />
                         </a>
-                      )
+                      );
                     })}
                   </div>
                 </div>
@@ -235,5 +252,5 @@ export default function Contact() {
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }
