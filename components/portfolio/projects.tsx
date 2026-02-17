@@ -55,7 +55,7 @@ export default function Projects() {
       description:
         'Uplift of the Target Australia product pages to new modern stack with a focus on page speed, performance and resultant improvement in click-through rates. Implementation of a monorepo with Nx, addition of page speed and performance metrics, feature flagging and new analytics tools to allow AB testing and measure effect of changes.',
       tech: ['Next.js', 'React', 'TypeScript', 'Node.js', 'K8s', 'Nx'],
-      link: '#',
+      link: 'https://www.target.com.au',
     },
   ]
 
