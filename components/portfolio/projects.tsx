@@ -104,6 +104,7 @@ export default function Projects() {
 
               <a
                 href={project.link}
+                target='_blank'
                 className="inline-flex items-center gap-2 mt-6 text-accent font-medium hover:gap-3 transition"
               >
                 Learn More
