@@ -1,9 +1,12 @@
 "use client";
 
-import { SubmitEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { z } from "zod"; 
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   EnvelopeClosedIcon,
   GitHubLogoIcon,
@@ -14,10 +17,27 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { createSmoothScrollHandler } from "@/lib/scroll-utils";
 
+const formInputSchema = z.object({
+  email: z.email(),
+  message: z.string().nonempty(),
+  name: z.string().nonempty(),
+})
+
+type FormInputs = z.infer<typeof formInputSchema>
+
 export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [submitted, setSubmitted] = useState(false);
+
+  const { register, handleSubmit } = useForm<FormInputs>({
+    resolver: zodResolver(formInputSchema),
+    defaultValues: {
+      email: "",
+      name: "",
+      message: ""
+    }
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,11 +58,16 @@ export default function Contact() {
     },
   };
 
-  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitted(true);
-    // TODO: Actually submit this.
-    setTimeout(() => setSubmitted(false), 3000);
+  const onSubmit = async (data: FormInputs) => {
+    const response = await fetch("/api/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+    }
   };
 
   const socialLinks = [
@@ -87,7 +112,7 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           {/* Contact Form */}
           <motion.div variants={itemVariants}>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
                 <label
                   htmlFor="name"
@@ -96,7 +121,7 @@ export default function Contact() {
                   Name
                 </label>
                 <Input
-                  id="name"
+                  {...register("name")}
                   type="text"
                   placeholder="Your name"
                   className="w-full"
@@ -112,7 +137,7 @@ export default function Contact() {
                   Email
                 </label>
                 <Input
-                  id="email"
+                  {...register("email")}
                   type="email"
                   placeholder="your@email.com"
                   className="w-full"
@@ -128,7 +153,7 @@ export default function Contact() {
                   Message
                 </label>
                 <Textarea
-                  id="message"
+                  {...register("message")}
                   placeholder="Your message here..."
                   rows={5}
                   className="w-full"
@@ -136,7 +161,7 @@ export default function Contact() {
                 />
               </div>
 
-              {submitted && (
+              {submitted ? (
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -144,14 +169,14 @@ export default function Contact() {
                 >
                   Thanks for reaching out! I&apos;ll get back to you soon.
                 </motion.p>
+              ) : (
+                <Button
+                  type="submit"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  Send Message
+                </Button>
               )}
-
-              <Button
-                type="submit"
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-              >
-                Send Message
-              </Button>
             </form>
           </motion.div>
 
