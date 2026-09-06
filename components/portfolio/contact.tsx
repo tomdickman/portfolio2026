@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useForm } from "react-hook-form";
-import { z } from "zod"; 
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   EnvelopeClosedIcon,
@@ -18,25 +18,31 @@ import { Textarea } from "@/components/ui/textarea";
 import { createSmoothScrollHandler } from "@/lib/scroll-utils";
 
 const formInputSchema = z.object({
-  email: z.email(),
-  message: z.string().nonempty(),
-  name: z.string().nonempty(),
-})
+  email: z.email().max(254),
+  message: z.string().trim().min(1).max(5_000),
+  name: z.string().trim().min(1).max(100),
+  website: z.string().max(200),
+});
 
-type FormInputs = z.infer<typeof formInputSchema>
+type FormInputs = z.infer<typeof formInputSchema>;
+
+const contactEmail = "tom@tomdickman.dev";
 
 export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [submitted, setSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "submitting" | "success" | "error" | "rate-limited"
+  >("idle");
 
   const { register, handleSubmit } = useForm<FormInputs>({
     resolver: zodResolver(formInputSchema),
     defaultValues: {
       email: "",
       name: "",
-      message: ""
-    }
+      message: "",
+      website: "",
+    },
   });
 
   const containerVariants = {
@@ -59,14 +65,22 @@ export default function Contact() {
   };
 
   const onSubmit = async (data: FormInputs) => {
-    const response = await fetch("/api/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    setSubmitStatus("submitting");
 
-    if (response.ok) {
-      setSubmitted(true);
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+      } else {
+        setSubmitStatus(response.status === 429 ? "rate-limited" : "error");
+      }
+    } catch {
+      setSubmitStatus("error");
     }
   };
 
@@ -83,7 +97,7 @@ export default function Contact() {
     },
     {
       icon: EnvelopeClosedIcon,
-      href: "mailto:tom@tomdickman.com.au",
+      href: `mailto:${contactEmail}`,
       label: "Email",
     },
   ];
@@ -113,6 +127,20 @@ export default function Contact() {
           {/* Contact Form */}
           <motion.div variants={itemVariants}>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <div
+                className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden"
+                aria-hidden="true"
+              >
+                <label htmlFor="website">Website</label>
+                <input
+                  {...register("website")}
+                  id="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <div>
                 <label
                   htmlFor="name"
@@ -122,9 +150,11 @@ export default function Contact() {
                 </label>
                 <Input
                   {...register("name")}
+                  id="name"
                   type="text"
                   placeholder="Your name"
                   className="w-full"
+                  maxLength={100}
                   required
                 />
               </div>
@@ -138,9 +168,11 @@ export default function Contact() {
                 </label>
                 <Input
                   {...register("email")}
+                  id="email"
                   type="email"
                   placeholder="your@email.com"
                   className="w-full"
+                  maxLength={254}
                   required
                 />
               </div>
@@ -154,28 +186,48 @@ export default function Contact() {
                 </label>
                 <Textarea
                   {...register("message")}
+                  id="message"
                   placeholder="Your message here..."
                   rows={5}
                   className="w-full"
+                  maxLength={5_000}
                   required
                 />
               </div>
 
-              {submitted ? (
+              {submitStatus === "success" ? (
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   className="text-accent font-medium"
+                  role="status"
                 >
                   Thanks for reaching out! I&apos;ll get back to you soon.
                 </motion.p>
               ) : (
-                <Button
-                  type="submit"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                >
-                  Send Message
-                </Button>
+                <>
+                  {submitStatus === "error" && (
+                    <p className="text-destructive text-sm" role="alert">
+                      Your message couldn&apos;t be sent. Please try again or
+                      email me directly at {contactEmail}.
+                    </p>
+                  )}
+                  {submitStatus === "rate-limited" && (
+                    <p className="text-destructive text-sm" role="alert">
+                      Too many messages have been submitted. Please wait a few
+                      minutes or email me directly at {contactEmail}.
+                    </p>
+                  )}
+                  <Button
+                    type="submit"
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                    disabled={submitStatus === "submitting"}
+                  >
+                    {submitStatus === "submitting"
+                      ? "Sending..."
+                      : "Send Message"}
+                  </Button>
+                </>
               )}
             </form>
           </motion.div>
@@ -194,10 +246,10 @@ export default function Contact() {
                 <div>
                   <p className="text-sm text-muted-foreground mb-2">EMAIL</p>
                   <a
-                    href="mailto:tom@tomdickman.com.au"
+                    href={`mailto:${contactEmail}`}
                     className="text-lg font-medium text-foreground hover:text-accent transition"
                   >
-                    tom@tomdickman.com.au
+                    {contactEmail}
                   </a>
                 </div>
 
