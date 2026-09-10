@@ -4,3 +4,4 @@ next-env.d.ts
 coverage
 build
 out
+pnpm-lock.yaml
